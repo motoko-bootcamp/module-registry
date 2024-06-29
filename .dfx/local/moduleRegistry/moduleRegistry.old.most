@@ -1,0 +1,5 @@
+// Version: 1.0.0
+actor {
+  stable var id : Nat;
+  stable var modules : [(Nat, Text, Text, Blob)]
+};

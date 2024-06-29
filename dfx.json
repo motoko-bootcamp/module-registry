@@ -1,0 +1,8 @@
+{
+    "canisters": {
+        "moduleRegistry" : {
+            "main" : "main.mo",
+            "type" : "motoko"
+        }
+    }
+}

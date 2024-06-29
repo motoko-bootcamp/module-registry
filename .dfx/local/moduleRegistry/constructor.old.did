@@ -1,0 +1,26 @@
+type Result_1 = 
+ variant {
+   err: text;
+   ok: record {
+         id: nat;
+         name: text;
+         version: text;
+         wasm: blob;
+       };
+ };
+type Result = 
+ variant {
+   err: text;
+   ok;
+ };
+service : {
+  getModules: () -> (vec record {
+                           nat;
+                           text;
+                           text;
+                         }) query;
+  reboot_registry_getModuleById: (nat) -> (Result_1);
+  reboot_registry_getModuleByName: (text) -> (Result_1);
+  reboot_registry_registerModule: (text, text, blob) -> (Result);
+  reboot_registry_updateModule: (nat, text, text, blob) -> (Result);
+}

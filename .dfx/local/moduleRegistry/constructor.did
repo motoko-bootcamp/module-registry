@@ -1,0 +1,15 @@
+type Result = variant { ok; err : text };
+type Result_1 = variant {
+  ok : record { id : nat; name : text; wasm : vec nat8; version : text };
+  err : text;
+};
+type moduleRegistry = service {
+  reboot_registry_getAllModules : () -> (
+      vec record { id : nat; name : text; version : text },
+    ) query;
+  reboot_registry_getModuleById : (nat) -> (Result_1);
+  reboot_registry_getModuleByName : (text) -> (Result_1);
+  reboot_registry_registerModule : (text, text, vec nat8) -> (Result);
+  reboot_registry_updateModule : (nat, text, text, vec nat8) -> (Result);
+};
+service : () -> moduleRegistry
